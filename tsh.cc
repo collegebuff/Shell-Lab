@@ -177,6 +177,8 @@ void eval(char *cmdline)
         sigprocmask(SIG_BLOCK, &set, NULL); //all the signals in set (the set in this case is the SIGCHLD signal) are blocked
         //this is so that you can reap the child later and the data wont be lost.
         pid = fork(); //fork a child
+        /* In the parent, fork returns the PID of the child. In the child,
+fork returns a value of 0.*/
 
         if (pid < 0) { //if the process id is less than zero there will be an error
             printf("fork(): forking error\n");
